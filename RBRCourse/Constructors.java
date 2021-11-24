@@ -1,4 +1,3 @@
-package RBRCourse;
 
 public class Constructors {
     public Constructors() {

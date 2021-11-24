@@ -1,4 +1,3 @@
-package RBRCourse;
 
 class BaseClass {
     int a = 10;

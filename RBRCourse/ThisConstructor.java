@@ -1,5 +1,3 @@
-package RBRCourse;
-
 public class ThisConstructor {
     Integer age;
 

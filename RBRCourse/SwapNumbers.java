@@ -1,5 +1,3 @@
-package RBRCourse;
-
 class Double {
     int x;
 }

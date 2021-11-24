@@ -1,4 +1,3 @@
-package RBRCourse;
 
 public class StringLiteral {
     public static void main(String[] args) {

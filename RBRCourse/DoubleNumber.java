@@ -1,4 +1,3 @@
-package RBRCourse;
 
 class DoubleNumberCall {
     public int x;

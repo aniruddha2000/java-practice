@@ -1,4 +1,3 @@
-package RBRCourse;
 
 class BaseClassMethodParameterized {
     int age;

@@ -1,4 +1,3 @@
-package RBRCourse;
 
 class ParentClass {
     public void salaryOfCompany(String companyName) {

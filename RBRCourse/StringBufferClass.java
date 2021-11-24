@@ -1,4 +1,3 @@
-package RBRCourse;
 
 public class StringBufferClass {
     private void timeAnalysis() {

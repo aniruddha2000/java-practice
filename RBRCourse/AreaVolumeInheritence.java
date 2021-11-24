@@ -1,4 +1,3 @@
-package RBRCourse;
 
 class Area {
     int length, width;

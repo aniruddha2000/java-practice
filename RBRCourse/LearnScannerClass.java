@@ -1,4 +1,3 @@
-package RBRCourse;
 
 import java.util.Scanner;
 

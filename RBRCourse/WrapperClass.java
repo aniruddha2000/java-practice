@@ -1,4 +1,3 @@
-package RBRCourse;
 
 public class WrapperClass {
     public static void main(String[] args) {
@@ -15,7 +14,7 @@ public class WrapperClass {
         // Wrapper Class -> Primitive
         int salaryPrimitive = salaryWrapperInteger.intValue();
         System.out.println(salaryPrimitive);
-        //Unboxing
+        // Unboxing
         int salaryUnboxing = salaryAutoboxing;
         System.out.println("Unboxing = " + salaryUnboxing);
     }

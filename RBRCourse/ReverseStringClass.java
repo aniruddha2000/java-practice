@@ -1,4 +1,3 @@
-package RBRCourse;
 
 public class ReverseStringClass {
     private String reverse(String str) {
