@@ -9,5 +9,7 @@ public class PrepareTeeCoffe {
         // karnatakaCoffee.prepareRecipie();
         CoffeeWithHook filterCoffee = new CoffeeWithHook();
         filterCoffee.prepareRecipie();
+        TeeWithHook tajTee = new TeeWithHook();
+        tajTee.prepareRecipie();
     }
 }
