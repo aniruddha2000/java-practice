@@ -7,9 +7,9 @@ interface InnerInterfaceMethodDeclaration {
         System.out.println("Twitter");
     }
 
-    private void oracle() {
-        System.out.println("Oracle");
-    }
+    // private void oracle() {
+    // System.out.println("Oracle");
+    // }
 }
 
 class InnerInterfaceMethodDeclaration_1 implements InnerInterfaceMethodDeclaration {
