@@ -7,6 +7,9 @@ public class ArrayException {
             System.out.println("This never going to execute");
         } catch (ArrayIndexOutOfBoundsException E) {
             System.out.println("Excention caught " + E);
+            System.out.println(E.getStackTrace());
+        } finally {
+            System.out.println("Finally it is happenning");
         }
     }
 }
