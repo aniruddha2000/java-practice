@@ -1,0 +1,77 @@
+--i Display student names along with the department name.
+
+SELECT STUDENT.NAME, DEPARTMENT.DEPTNAME FROM STUDENT INNER JOIN DEPARTMENT ON STUDENT.DEPTCODE = DEPARTMENT.DEPTCODE;  
+
+--ii. Display student names, subject code and marks of students who took admission in the year 2017 and read subject CS502.
+
+SELECT STUDENT.NAME, RESULTS.SUB_CODE, RESULTS.MARKS FROM STUDENT INNER JOIN RESULTS ON STUDENT.ROLLNO = RESULTS.ROLLNO AND STUDENT.YEAROFADM = 2017 AND RESULTS.SUB_CODE = 'CS502'; 
+
+--iii. Find the name of the students who got marks between 70 to 89 in CS501.
+
+SELECT STUDENT.NAME FROM STUDENT JOIN RESULTS ON STUDENT.ROLLNO = RESULTS.ROLLNO AND RESULTS.MARKS > 70 AND RESULTS.MARKS <= 89 AND RESULTS.SUB_CODE = 'CS501'; 
+
+--iv. Find the student name, roll no who appeared in the examination for paper DBMS.
+
+SELECT STUDENT.NAME, STUDENT.ROLLNO FROM STUDENT JOIN RESULTS ON STUDENT.ROLLNO = RESULTS.ROLLNO AND RESULTS.SUB_CODE IN (SELECT SUBJECTCODE FROM SUBJECT WHERE SUBJECTNAME = 'Data Base Systems');
+
+--v. Show student names, subject code and marks for CSE 3rd year students.
+
+SELECT STUDENT.NAME, RESULTS.SUB_CODE, RESULTS.MARKS FROM STUDENT JOIN RESULTS ON STUDENT.ROLLNO = RESULTS.ROLLNO AND STUDENT.SEMESTER = 'SEM5' OR STUDENT.SEMESTER = 'SEM6';
+
+--vi. Show student names, department name for 5 th semester students who born in MAY.
+
+SELECT STUDENT.NAME, DEPARTMENT.DEPTNAME FROM STUDENT JOIN DEPARTMENT ON STUDENT.DEPTCODE = DEPARTMENT.DEPTCODE AND STUDENT.SEMESTER = 'SEM5' AND STUDENT.BIRTHDATE LIKE '%-05-%';
+
+--vii. Show student names, subject name for 5th semester student where subject name contains the word ‘DATA’
+
+SELECT STUDENT.NAME, SUBJECT.SUBJECTNAME FROM STUDENT,RESULTS,SUBJECT WHERE STUDENT.ROLLNO = RESULTS.ROLLNO AND RESULTS.SUB_CODE = SUBJECT.SUBJECTCODE AND STUDENT.SEMESTER = 'SEM5' AND SUBJECT.SUBJECTNAME LIKE '%Data%';  
+
+--viii. Show student names, subject name and marks for 5th semester students.
+
+SELECT STUDENT.NAME, SUBJECT.SUBJECTNAME, RESULTS.MARKS FROM STUDENT, RESULTS, SUBJECT WHERE STUDENT.ROLLNO = RESULTS.ROLLNO AND SUBJECT.SUBJECTCODE = RESULTS.SUB_CODE AND STUDENT.SEMESTER = 'SEM5';
+   
+--ix. Find the roll number, student names and marks for CSE students who get more than 80 in Data Structure.
+
+SELECT STUDENT.ROLLNO, STUDENT.NAME, RESULTS.MARKS FROM STUDENT, RESULTS, SUBJECT WHERE STUDENT.ROLLNO = RESULTS.ROLLNO AND RESULTS.SUB_CODE = SUBJECT.SUBJECTCODE AND RESULTS.MARKS > 80 AND RESULTS.SUB_CODE IN (SELECT SUBJECTCODE FROM SUBJECT WHERE SUBJECTNAME LIKE '%Data Structure%'); 
+
+--x. Show student names, department name, subject name and subject wise marks for which the student get more than 90.
+
+SELECT STUDENT.NAME, DEPARTMENT.DEPTNAME, SUBJECT.SUBJECTNAME, RESULTS.MARKS FROM STUDENT,DEPARTMENT, RESULTS, SUBJECT WHERE STUDENT.ROLLNO = RESULTS.ROLLNO AND RESULTS.SUB_CODE = SUBJECT.SUBJECTCODE AND STUDENT.DEPTCODE = DEPARTMENT.DEPTCODE AND RESULTS.MARKS > 90;  
+
+--xi. Add column HOD in DEPARTMENT. Insert faculty id in place of HoD.
+
+ALTER TABLE DEPARTMENT ADD HOD VARCHAR2(5);
+UPDATE DEPARTMENT9017 SET HOD = 'F01' where deptcode = 'CSE';
+Update DEPARTMENT9017 set HOD = 'F02' where deptcode = 'ECE';
+Update DEPARTMENT9017 set HOD = 'F03' where deptcode = 'IT';
+Update DEPARTMENT9017 set HOD = 'F04' where deptcode = 'EE';
+
+--xii. Add column TEACHER in table SUBJECT. Insert faculty id in this column.
+
+ALTER TABLE SUBJECT9017 ADD TEACHER VARCHAR2(5);
+UPDATE SUBJECT9017 SET TEACHER='F01' WHERE SUBJECTCODE='CS301';
+UPDATE SUBJECT9017 SET TEACHER='F05' WHERE SUBJECTCODE='CS302';
+UPDATE SUBJECT9017 SET TEACHER='F06' WHERE SUBJECTCODE='CS501';
+UPDATE SUBJECT9017 SET TEACHER='F07' WHERE SUBJECTCODE='CS502';
+UPDATE SUBJECT9017 SET TEACHER='F08' WHERE SUBJECTCODE='ECS501';
+UPDATE SUBJECT9017 SET TEACHER='F02' WHERE SUBJECTCODE='EC501';
+UPDATE SUBJECT9017 SET TEACHER='F09' WHERE SUBJECTCODE='CS503';
+
+--xiii. Show the department name, semester, subject name along with faculty name.
+
+Select D.DEPTNAME,S.SEMESTER,S.SUBJECTNAME,F.NAME from DEPARTMENT9017 D join
+SUBJECT9017 S on D.DEPTCODE=S.DEPTCODE join FACULTY9017 F on S.TEACHER=F.FID;
+
+--xiv. Find the names of all faculties whose HOD name is given.
+
+Select name from faculty9017 join department9017 on faculty9017.fid=department9017.hod;
+
+--xv. Display subject name, subject code, marks including all subjects. [Outer join ]
+
+Select s.subjectname,s.subjectcode,r.marks from subject9017 s left outer join result9017 r on
+s.subjectcode=r.sub_code;
+
+--xvi. Display students name, subject code, marks. Include all students. [Outer join ]
+
+Select s.name,r.sub_code,r.marks from student9017 s left outer join result9017 r on
+s.rollno=r.rollno;
